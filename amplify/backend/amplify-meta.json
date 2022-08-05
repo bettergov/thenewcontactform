@@ -1,0 +1,101 @@
+{
+  "providers": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-webform-webform-150814-authRole",
+      "UnauthRoleArn": "arn:aws:iam::096035804001:role/amplify-webform-webform-150814-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::096035804001:role/amplify-webform-webform-150814-authRole",
+      "Region": "us-east-2",
+      "DeploymentBucketName": "amplify-webform-webform-150814-deployment",
+      "UnauthRoleName": "amplify-webform-webform-150814-unauthRole",
+      "StackName": "amplify-webform-webform-150814",
+      "StackId": "arn:aws:cloudformation:us-east-2:096035804001:stack/amplify-webform-webform-150814/5f91f9b0-021e-11ed-a60f-02b2861294e0",
+      "AmplifyAppId": "drgh61pljxlw7"
+    }
+  },
+  "storage": {
+    "formtable": {
+      "service": "DynamoDB",
+      "providerPlugin": "awscloudformation",
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-webform-webform-150814-deployment/amplify-cfn-templates/storage/formtable-cloudformation-template.json",
+        "logicalId": "storageformtable"
+      },
+      "lastPushTimeStamp": "2022-07-14T18:09:27.098Z",
+      "output": {
+        "PartitionKeyName": "id",
+        "Region": "us-east-2",
+        "Arn": "arn:aws:dynamodb:us-east-2:096035804001:table/formtable-webform",
+        "StreamArn": "arn:aws:dynamodb:us-east-2:096035804001:table/formtable-webform/stream/2022-07-12T20:58:03.242",
+        "PartitionKeyType": "S",
+        "Name": "formtable-webform"
+      },
+      "lastPushDirHash": "uYDqE1OQSS4NGsg4xoQhhDMS4pI="
+    }
+  },
+  "function": {
+    "formfunction": {
+      "build": true,
+      "providerPlugin": "awscloudformation",
+      "service": "Lambda",
+      "dependsOn": [
+        {
+          "category": "storage",
+          "resourceName": "formtable",
+          "attributes": [
+            "Name",
+            "Arn",
+            "StreamArn"
+          ]
+        }
+      ],
+      "lastBuildTimeStamp": "2022-07-14T18:08:17.621Z",
+      "lastBuildType": "PROD",
+      "lastPackageTimeStamp": "2022-07-14T18:08:18.364Z",
+      "distZipFilename": "formfunction-31574b647a3849614657-build.zip",
+      "s3Bucket": {
+        "deploymentBucketName": "amplify-webform-webform-150814-deployment",
+        "s3Key": "amplify-builds/formfunction-31574b647a3849614657-build.zip"
+      },
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-webform-webform-150814-deployment/amplify-cfn-templates/function/formfunction-cloudformation-template.json",
+        "logicalId": "functionformfunction"
+      },
+      "lastPushTimeStamp": "2022-07-14T18:09:27.270Z",
+      "output": {
+        "Region": "us-east-2",
+        "Arn": "arn:aws:lambda:us-east-2:096035804001:function:formfunction-webform",
+        "Name": "formfunction-webform",
+        "LambdaExecutionRole": "webformLambdaRolec602724e-webform"
+      },
+      "lastPushDirHash": "edfHsdWacom47onmc9waLsfVv/s="
+    }
+  },
+  "api": {
+    "formapi": {
+      "service": "API Gateway",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "function",
+          "resourceName": "formfunction",
+          "attributes": [
+            "Name",
+            "Arn"
+          ]
+        }
+      ],
+      "providerMetadata": {
+        "s3TemplateURL": "https://s3.amazonaws.com/amplify-webform-webform-150814-deployment/amplify-cfn-templates/api/formapi-cloudformation-template.json",
+        "logicalId": "apiformapi"
+      },
+      "lastPushTimeStamp": "2022-07-14T18:09:27.108Z",
+      "output": {
+        "ApiName": "formapi",
+        "RootUrl": "https://wklhpddnja.execute-api.us-east-2.amazonaws.com/webform",
+        "ApiId": "wklhpddnja"
+      },
+      "lastPushDirHash": "j8FYEkBu8zXKQEZT6v7WkPEhJtM="
+    }
+  },
+  "hosting": {}
+}

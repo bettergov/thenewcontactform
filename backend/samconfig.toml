@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "contact-web-app"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1kim05i6wsvri"
+s3_prefix = "contact-web-app"
+region = "us-east-2"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "DynamoDBTableStreamARN=\"arn:aws:dynamodb:us-east-2:096035804001:table/formtable-webform/stream/2022-07-12T20:58:03.242\" FromMailIdentityName=\"ccalderon@bettergov.org\" ToMailIdentityName=\"ccalderon@bettergov.org\""
+image_repositories = []

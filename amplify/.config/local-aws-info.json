@@ -1,0 +1,12 @@
+{
+  "dev": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "/Users/ccalderon/.amplify/awscloudformation/Yy8RA8jgKE"
+  },
+  "webform": {
+    "configLevel": "project",
+    "useProfile": false,
+    "awsConfigFilePath": "/Users/ccalderon/.amplify/awscloudformation/IfOXrfdCB6"
+  }
+}
